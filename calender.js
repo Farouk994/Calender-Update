@@ -21,5 +21,28 @@ var cal = {
         } else {
             cal.data = JSON.parse(cal.data);
         }
+
+        var squares = [];
+        if (cal.sMon && startDay != 1) {
+          var blanks = startDay==0 ? 7 : startDay ;
+          for (var i=1; i<blanks; i++) { squares.push("b"); }
+        }
+        if (!cal.sMon && startDay != 0) {
+          for (var i=0; i<startDay; i++) { squares.push("b"); }
+        }
+    
+    
+        for (var i=1; i<=daysInMth; i++) { squares.push(i); }
+    
+     
+        if (cal.sMon && endDay != 0) {
+          var blanks = endDay==6 ? 1 : 7-endDay;
+          for (var i=0; i<blanks; i++) { squares.push("b"); }
+        }
+        if (!cal.sMon && endDay != 6) {
+          var blanks = endDay==0 ? 6 : 6-endDay;
+          for (var i=0; i<blanks; i++) { squares.push("b"); }
+        }
+    
     }
 }
