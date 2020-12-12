@@ -87,4 +87,48 @@ var cal = {
     }
     cal.close();  
     },
-}
+ 
+  show : function (el) {
+   
+    cal.sDay = el.getElementsByClassName("dd")[0].innerHTML;
+
+    var tForm = "<h1>" + (cal.data[cal.sDay] ? "EDIT" : "ADD") + " EVENT</h1>";
+    tForm += "<div id='evt-date'>" + cal.sDay + " " + cal.mName[cal.sMth] + " " + cal.sYear + "</div>";
+    tForm += "<textarea id='evt-details' required>" + (cal.data[cal.sDay] ? cal.data[cal.sDay] : "") + "</textarea>";
+    tForm += "<input type='button' value='Close' onclick='cal.close()'/>";
+    tForm += "<input type='button' value='Delete' onclick='cal.del()'/>";
+    tForm += "<input type='submit' value='Save'/>";
+
+ 
+    var eForm = document.createElement("form");
+    eForm.addEventListener("submit", cal.save);
+    eForm.innerHTML = tForm;
+    var container = document.getElementById("cal-event");
+    container.innerHTML = "";
+    container.appendChild(eForm);
+  },
+
+ 
+  close : function () {
+    document.getElementById("cal-event").innerHTML = "";
+  },
+
+
+  save : function (evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    cal.data[cal.sDay] = document.getElementById("evt-details").value;
+    localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, JSON.stringify(cal.data));
+    cal.list();
+  },
+
+
+  del : function () {
+    if (confirm("Remove event?")) {
+      delete cal.data[cal.sDay];
+      localStorage.setItem("cal-" + cal.sMth + "-" + cal.sYear, JSON.stringify(cal.data));
+      cal.list();
+    }
+  }
+};
+
