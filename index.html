@@ -1,24 +1,53 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Simple Javascript Calendar</title>
-    <link href="calender.css" rel="stylesheet">
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>CALENDER</title>
+    <!-- <link href="moment.css" rel="stylesheet"> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <script src="calender.js"></script>
-  </head>
-  <body>
-    <div id="cal-wrap">
-     
-      <div id="cal-date">
-        <select id="cal-mth"></select>
-        <select id="cal-yr"></select>
-        <input id="cal-set" type="button" value="SET"/>
-      </div>
+</head>
+<style>
+    .container {
+        padding: 30px;
+        font-size: 30px;
+    }
 
-      
-      <div id="cal-container"></div>
+    #calendar {
+        padding: 30px;
+    }
+
+    
+</style>
+
+<body>
+    <br>
+    <div class="container">
+        <div id="cal-wrap">
+
+            <div class="back">
+                <div class="boxed">
+                    <div id="cal-date">
+                        <select id="cal-mth"></select>
+                        <select id="cal-yr"></select>
+                        <input id="cal-set" type="button" value="SET" />
+                    </div><br>
+                </div>
+            </div>
 
 
-      <div id="cal-event"></div>
+            <div id="cal-container"></div><br>
+
+
+            <div id="cal-event"></div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
+
+
